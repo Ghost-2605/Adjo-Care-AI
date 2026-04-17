@@ -1,0 +1,15 @@
+<section class="panel" id="tab-medications">
+  <div class="panel-inner">
+    <div class="panel-top-row"><h2>Medication Suggestions</h2></div>
+    <div id="meds-empty" class="empty-state">
+      <div class="empty-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="12" y="6" width="24" height="36" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M12 24h24M19 15h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <p>Run an analysis first to see OTC medication suggestions for your symptoms.</p>
+    </div>
+    <div id="meds-list" style="display:none">
+      <div class="card" style="background:var(--warn-bg);border-color:rgba(239,159,39,.25);margin-bottom:1rem;">
+        <div style="font-size:.8rem;color:var(--accent2);line-height:1.6;">⚠️ <strong>Disclaimer:</strong> These are general OTC suggestions only. Always consult a qualified doctor or pharmacist before taking any medication. Do not self-medicate for serious conditions.</div>
+      </div>
+      <div id="meds-content"></div>
+    </div>
+  </div>
+</section>

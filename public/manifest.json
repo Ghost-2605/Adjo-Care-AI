@@ -1,0 +1,40 @@
+{
+  "name": "AdJoCare – AI Medical Assistant",
+  "short_name": "AdJoCare",
+  "description": "AI-powered medical symptom analyzer with multilingual support. Get instant health insights, drug interaction checks, and nearby hospital recommendations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1a",
+  "theme_color": "#1D9E75",
+  "orientation": "portrait-primary",
+  "categories": ["health", "medical", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Symptom Check",
+      "short_name": "Check",
+      "url": "/?tab=check",
+      "icons": []
+    },
+    {
+      "name": "Drug Checker",
+      "short_name": "Drugs",
+      "url": "/?tab=drugs",
+      "icons": []
+    }
+  ]
+}

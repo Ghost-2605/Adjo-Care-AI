@@ -1,0 +1,35 @@
+<section class="panel" id="tab-result">
+  <div class="panel-inner">
+    <div class="panel-top-row">
+      <h2>AI Analysis</h2>
+      <button class="voice-btn" id="show-print-btn" style="gap:6px;">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 4.5V2h8v2.5M2.5 9H1.5V5h10v4h-1M2.5 7h8v4h-8z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        Export PDF
+      </button>
+    </div>
+    <div id="result-empty" class="empty-state">
+      <div class="empty-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5"/><path d="M24 16v10M24 30h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <p>No analysis yet. Fill in your symptoms and click Analyze.</p>
+    </div>
+    <div id="result-loading" class="loading-state" style="display:none">
+      <div class="ai-loader"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>
+      <span>AdJoCare AI is analyzing your symptoms…</span>
+    </div>
+    <div id="result-content" style="display:none">
+      <!-- Danger Level -->
+      <div class="danger-hero">
+        <div class="danger-eyebrow">Danger Level</div>
+        <span class="danger-level-text" id="danger-text">—</span>
+        <div class="meter-track"><div class="meter-fill" id="meter-fill" style="width:0%"></div></div>
+        <div class="meter-labels"><span>Fine</span><span>Moderate</span><span>Urgent</span><span>Emergency</span></div>
+      </div>
+      <!-- AI Text -->
+      <div class="card"><div id="ai-text"></div></div>
+      <!-- Score Breakdown -->
+      <div class="card">
+        <div class="card-header"><div class="card-icon teal"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Health Score Breakdown</span></div>
+        <div class="score-breakdown" id="score-breakdown-inline"></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<section class="panel" id="tab-vitals">
+  <div class="panel-inner">
+    <div class="panel-hero">
+      <h1>Vitals Tracker</h1>
+      <p>Log your vitals over time to share with your doctor.</p>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon teal"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h2l2-3.5 2 7 2-5 2 3.5h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Log New Reading</span></div>
+      <div class="vitals-grid">
+        <div class="vital-input-card">
+          <div class="vital-input-label">Blood Pressure</div>
+          <div class="vital-input-row">
+            <input class="vital-num-input" id="v-bp-sys" type="number" placeholder="120" style="width:50px">
+            <span class="vital-unit">/</span>
+            <input class="vital-num-input" id="v-bp-dia" type="number" placeholder="80" style="width:50px">
+            <span class="vital-unit">mmHg</span>
+          </div>
+        </div>
+        <div class="vital-input-card">
+          <div class="vital-input-label">Pulse Rate</div>
+          <div class="vital-input-row">
+            <input class="vital-num-input" id="v-pulse" type="number" placeholder="72">
+            <span class="vital-unit">bpm</span>
+          </div>
+        </div>
+        <div class="vital-input-card">
+          <div class="vital-input-label">Temperature</div>
+          <div class="vital-input-row">
+            <input class="vital-num-input" id="v-temp" type="number" placeholder="98.6" step="0.1">
+            <span class="vital-unit">°F</span>
+          </div>
+        </div>
+        <div class="vital-input-card">
+          <div class="vital-input-label">Blood Sugar</div>
+          <div class="vital-input-row">
+            <input class="vital-num-input" id="v-sugar" type="number" placeholder="100">
+            <span class="vital-unit">mg/dL</span>
+          </div>
+        </div>
+      </div>
+      <button class="vital-log-btn" id="log-vitals-btn" style="width:100%;padding:.65rem;border-radius:var(--radius-sm);font-size:.9rem;">Log Reading</button>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon amber"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h12" stroke="currentColor" stroke-width="1.2"/></svg></div><span>History</span></div>
+      <div id="vitals-log-empty" style="font-size:.85rem;color:var(--text3);text-align:center;padding:1.5rem 0;">No readings logged yet. Start tracking above.</div>
+      <div id="vitals-log"></div>
+    </div>
+  </div>
+</section>

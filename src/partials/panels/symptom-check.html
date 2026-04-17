@@ -1,0 +1,130 @@
+<section class="panel active" id="tab-check">
+  <div class="panel-inner">
+    <div class="panel-hero">
+      <h1 id="hero-title" data-i18n="symptomsTitle">How are you feeling today?</h1>
+      <p data-i18n="symptomsSub">Describe your symptoms and let AdJoCare AI assess your condition.</p>
+    </div>
+
+    <!-- Patient Info -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon teal"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 12c0-2.761 2.462-4.5 5.5-4.5s5.5 1.739 5.5 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <span>Patient Information</span>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="namePh">Full Name</label>
+          <input class="form-input" id="inp-name" type="text" placeholder="Your name" data-i18n="namePh">
+        </div>
+        <div class="form-group">
+          <label data-i18n="agePh">Age</label>
+          <input class="form-input" id="inp-age" type="number" min="1" max="120" placeholder="e.g. 32" data-i18n="agePh">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Blood Group <span class="optional">(optional)</span></label>
+        <select class="form-input" id="inp-blood">
+          <option value="">Select blood group</option>
+          <option>A+</option><option>A−</option><option>B+</option><option>B−</option>
+          <option>AB+</option><option>AB−</option><option>O+</option><option>O−</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label><span data-i18n="historyPh">Medical History</span> <span class="optional">(optional)</span></label>
+        <input class="form-input" id="inp-history" type="text" placeholder="e.g. Diabetes, Hypertension" data-i18n="historyPh">
+      </div>
+    </div>
+
+    <!-- Body Map -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon amber"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="2.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 5.5C4.5 4.5 5.5 4 7 4s2.5.5 2.5 1.5V8L11 11H3l1.5-3V5.5z" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 11v1.5M8.5 11v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <span>Affected Body Areas <span class="optional" style="font-weight:400;font-size:.78rem;">(tap to select)</span></span>
+      </div>
+      <div class="body-map-wrap">
+        <svg viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg" style="max-width:120px;display:block;margin:0 auto;flex-shrink:0;">
+          <ellipse class="body-region" id="br-head" data-id="head" data-label="Head" cx="50" cy="18" rx="15" ry="16" />
+          <rect class="body-region" id="br-neck" data-id="neck" data-label="Neck" x="44" y="33" width="12" height="8" rx="3" />
+          <rect class="body-region" id="br-chest" data-id="chest" data-label="Chest" x="33" y="43" width="34" height="28" rx="5" />
+          <rect class="body-region" id="br-abdomen" data-id="abdomen" data-label="Abdomen" x="33" y="73" width="34" height="24" rx="4" />
+          <rect class="body-region" id="br-larm" data-id="larm" data-label="Left Arm" x="16" y="43" width="15" height="48" rx="6" />
+          <rect class="body-region" id="br-rarm" data-id="rarm" data-label="Right Arm" x="69" y="43" width="15" height="48" rx="6" />
+          <rect class="body-region" id="br-lleg" data-id="lleg" data-label="Left Leg" x="33" y="99" width="15" height="60" rx="6" />
+          <rect class="body-region" id="br-rleg" data-id="rleg" data-label="Right Leg" x="52" y="99" width="15" height="60" rx="6" />
+          <ellipse class="body-region" id="br-lfoot" data-id="lfoot" data-label="Left Foot" cx="40" cy="166" rx="8" ry="5" />
+          <ellipse class="body-region" id="br-rfoot" data-id="rfoot" data-label="Right Foot" cx="59" cy="166" rx="8" ry="5" />
+        </svg>
+        <div class="selected-regions-list" id="selected-regions-list">
+          <span style="font-size:.75rem;color:var(--text3);line-height:2;">Tap body areas to mark affected regions…</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Symptoms + Photo Upload -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon amber"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5a5.5 5.5 0 110 11A5.5 5.5 0 017 1.5z" stroke="currentColor" stroke-width="1.2"/><path d="M7 4.5v4M7 10h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <span>Symptom Description</span>
+        <button class="voice-btn" id="voice-btn" style="margin-left:auto;" title="Voice input">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="1" width="5" height="7" rx="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 6.5a4.5 4.5 0 009 0M6.5 11v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <span id="voice-btn-label">Voice</span>
+        </button>
+      </div>
+      <div class="form-group">
+        <textarea class="form-textarea" id="inp-symptoms" placeholder="Describe your symptoms in detail — e.g. sharp pain in chest, headache since morning, fever 101°F…" rows="4" data-i18n="symptomsPh"></textarea>
+      </div>
+      <!-- Photo Upload -->
+      <div class="form-group" style="margin-bottom:0">
+        <label>Symptom Photo <span class="optional">(optional — rash, wound, swelling)</span></label>
+        <div class="photo-drop" id="photo-drop">
+          <input type="file" id="photo-file" accept="image/*">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="margin:0 auto .5rem;display:block;color:var(--text3)"><rect x="2" y="6" width="24" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="12" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 20l7-5 4 4 3-3 7 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="font-size:.825rem;color:var(--text3);">Click or drag to upload photo</div>
+        </div>
+        <div id="photo-preview-wrap" style="display:none;text-align:center;margin-top:.5rem;">
+          <div class="photo-preview"><img id="photo-preview-img" src="" alt="Symptom photo"><button class="photo-preview-remove" id="remove-photo-btn">✕</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Duration + Location + Severity -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon teal"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3.5l2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <span>Details</span>
+      </div>
+      <div class="form-group">
+        <label>Duration of symptoms</label>
+        <div class="chip-grid" id="duration-chips">
+          <button class="chip" data-val="Under 1 hr" data-i18n="duration1">Under 1 hr</button>
+          <button class="chip" data-val="1–6 hrs" data-i18n="duration2">1–6 hrs</button>
+          <button class="chip" data-val="6–24 hrs" data-i18n="duration3">6–24 hrs</button>
+          <button class="chip" data-val="1–3 days" data-i18n="duration4">1–3 days</button>
+          <button class="chip" data-val="3+ days" data-i18n="duration5">3+ days</button>
+          <button class="chip" data-val="Chronic" data-i18n="duration6">Chronic</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your Location</label>
+        <div class="location-input-wrap">
+          <input class="form-input" id="inp-location" type="text" placeholder="e.g. Udupi, Karnataka">
+          <button class="locate-btn" id="locate-btn" title="Detect location">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 100 14A7 7 0 008 1z" stroke="currentColor" stroke-width="1.3"/><path d="M8 5a3 3 0 100 6A3 3 0 008 5z" stroke="currentColor" stroke-width="1.3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label>Severity <span class="optional">(1 = mild, 10 = severe)</span></label>
+        <div class="severity-wrap">
+          <input type="range" class="severity-slider" id="inp-severity" min="1" max="10" value="5">
+          <div class="severity-val" id="severity-val">5</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="analyze-btn" id="analyze-btn">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2a7 7 0 110 14A7 7 0 019 2z" fill="rgba(255,255,255,.2)"/><path d="M6 9l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="analyzeBtn">Analyze Symptoms with AI</span>
+    </button>
+  </div>
+</section>

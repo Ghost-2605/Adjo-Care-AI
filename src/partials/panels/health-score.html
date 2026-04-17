@@ -1,0 +1,22 @@
+<section class="panel" id="tab-score">
+  <div class="panel-inner">
+    <div class="panel-top-row"><h2>Health Score</h2></div>
+    <div class="card">
+      <div class="score-ring-wrap">
+        <svg width="110" height="110" viewBox="0 0 110 110">
+          <circle cx="55" cy="55" r="50" fill="none" stroke="var(--surface2)" stroke-width="10"/>
+          <circle id="score-ring-fill" cx="55" cy="55" r="50" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 55 55)"/>
+          <text x="55" y="60" text-anchor="middle" font-family="var(--font-serif)" font-size="28" fill="var(--text)" id="score-num">—</text>
+        </svg>
+        <div class="score-text-wrap">
+          <div class="score-num" id="score-num-big" style="font-size:1.5rem;font-family:var(--font-serif);font-weight:300;">—<span style="font-size:1rem;color:var(--text3)">/100</span></div>
+          <div class="score-desc" id="score-desc">Complete a symptom analysis to see your score.</div>
+        </div>
+      </div>
+    </div>
+    <div id="score-trend-card" class="score-trend-card">
+      <div style="font-size:.8rem;font-weight:500;margin-bottom:.5rem;">Trend (last analyses)</div>
+      <div id="score-trend"></div>
+    </div>
+  </div>
+</section>

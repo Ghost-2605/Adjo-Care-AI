@@ -1,0 +1,94 @@
+<!-- ═══ API KEY MODAL ════════════════════════════════════════ -->
+<div id="api-modal" class="hidden">
+  <div class="api-modal-card">
+    <div class="api-modal-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 7a2 2 0 11-4 0 2 2 0 014 0zM14 7c0 3-8 11-8 11l-2-2m10-9L20 3m0 0v3m0-3h-3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="api-modal-title">Welcome to AdJoCare</div>
+    <div class="api-modal-sub">To use the AI medical assistant, please provide your Groq API key. This is stored securely in your browser.</div>
+    <div class="api-key-input-wrap">
+      <input type="password" id="api-key-input" class="api-key-input" placeholder="Enter Groq API Key">
+      <button id="api-key-eye" class="api-key-eye"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M1 9s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></button>
+    </div>
+    <div class="api-key-hint">Don't have one? <a href="https://console.groq.com/keys" target="_blank">Get a free key here</a></div>
+    <div id="api-error" class="api-error-msg"></div>
+    <button id="api-save-btn" class="api-save-btn">Save API Key</button>
+    <button id="api-skip-btn" class="api-skip-btn">Skip for now</button>
+  </div>
+</div>
+
+<!-- ═══ WELCOME ═══════════════════════════════════════════════ -->
+<div id="welcome" style="display:none">
+  <div class="welcome-blob"></div>
+  <div class="welcome-blob2"></div>
+  <div class="welcome-inner">
+    <div class="welcome-badge">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.2 3.6H11l-3 2.2 1.1 3.7L6 8.4l-3.1 2.1 1.1-3.7L1 4.6h3.8z" fill="currentColor"/></svg>
+      AI-Powered · v2.0
+    </div>
+    <h1 class="welcome-logo">Adjo<em>Care</em></h1>
+    <p class="welcome-tagline">Your personal AI medical assistant — describe symptoms, get instant insights, find nearby care with real doctor info.</p>
+    <div class="welcome-features">
+      <div class="wf-card">
+        <div class="wf-icon teal"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2a7 7 0 110 14A7 7 0 019 2z" stroke="#1D9E75" stroke-width="1.4"/><path d="M9 6v4M9 12h.01" stroke="#1D9E75" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <div class="wf-label">Symptom Analysis + Photo</div>
+      </div>
+      <div class="wf-card">
+        <div class="wf-icon amber"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="6" width="14" height="10" rx="1" stroke="#BA7517" stroke-width="1.4"/><path d="M5 15v-4h8v4M9 2v4M7 4h4" stroke="#BA7517" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <div class="wf-label">Hospitals + Doctors</div>
+      </div>
+      <div class="wf-card">
+        <div class="wf-icon red"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.5 9h9M9 4.5v9" stroke="#E24B4A" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="wf-label">Meds + Drug Checker</div>
+      </div>
+    </div>
+    <button class="welcome-cta" id="welcome-cta">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5a7.5 7.5 0 110 15A7.5 7.5 0 019 1.5z" fill="rgba(255,255,255,.2)"/><path d="M6.5 9h5M9 6.5l2.5 2.5L9 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Get Started
+    </button>
+    <p class="welcome-footer">Not a substitute for professional medical advice. <a id="welcome-footer-link">Always consult a doctor.</a></p>
+  </div>
+</div>
+
+<!-- ═══ EMERGENCY OVERLAY ════════════════════════════════════ -->
+<div class="overlay" id="emergency-overlay">
+  <div class="overlay-card">
+    <div class="overlay-pulse"><div class="overlay-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 8v12M16 23h.01" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
+    <div class="overlay-title">Emergency Call 108</div>
+    <div class="overlay-sub">This will connect you to the nearest emergency ambulance. Use only in a real medical emergency.</div>
+    <button class="call-btn" id="call-108-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2a1 1 0 011-1h2a1 1 0 01.95.684l.886 2.657a1 1 0 01-.228 1.023L6.4 6.05a9.5 9.5 0 004.55 4.55l1.286-1.108a1 1 0 011.023-.228l2.657.886A1 1 0 0116 11.1V13a1 1 0 01-1 1C7 14 2 9 2 2a1 1 0 011-1z" fill="white"/></svg>
+      Call 108 Now
+    </button>
+    <button class="cancel-overlay-btn" id="cancel-emergency-btn">Cancel</button>
+  </div>
+</div>
+
+<!-- ═══ PRINT OVERLAY ════════════════════════════════════════ -->
+<div class="overlay" id="print-overlay">
+  <div class="overlay-card" style="max-width:420px;">
+    <div class="overlay-title">Download Report</div>
+    <div class="overlay-sub">Your AI analysis report is ready to export.</div>
+    <div id="print-preview" class="print-preview"></div>
+    <button class="call-btn" style="background:var(--accent);box-shadow:0 4px 16px rgba(29,158,117,.3);" id="download-pdf-btn">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3.5 5.5V2h8v3.5M3.5 10H2V6h11v4h-1.5M3.5 8h8v5h-8z" stroke="white" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      Download PDF
+    </button>
+    <button class="cancel-overlay-btn" id="cancel-print-btn">Cancel</button>
+  </div>
+</div>
+
+<!-- ═══ REMINDER MODAL ═══════════════════════════════════════ -->
+<div class="reminder-modal" id="reminder-modal">
+  <div class="reminder-card">
+    <div class="reminder-title">Set Appointment Reminder</div>
+    <div class="reminder-sub">We'll remind you to visit:</div>
+    <div class="reminder-hosp-name" id="reminder-hosp-name">—</div>
+    <div class="reminder-time-row">
+      <input type="datetime-local" class="reminder-time-input" id="reminder-time">
+      <button class="reminder-set-btn" id="confirm-reminder-btn">Set</button>
+    </div>
+    <button class="reminder-cancel" id="cancel-reminder-btn">Cancel</button>
+  </div>
+</div>
+
+<!-- ═══ TOAST ════════════════════════════════════════════════ -->
+<div class="toast-wrap" id="toast-wrap"></div>
