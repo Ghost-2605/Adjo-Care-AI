@@ -35,27 +35,32 @@
       </div>
     </div>
 
-    <!-- Body Map -->
-    <div class="card">
+    <!-- 3D Interactive Body Figure -->
+    <div class="card viz-card">
       <div class="card-header">
-        <div class="card-icon amber"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="2.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 5.5C4.5 4.5 5.5 4 7 4s2.5.5 2.5 1.5V8L11 11H3l1.5-3V5.5z" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 11v1.5M8.5 11v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-        <span>Affected Body Areas <span class="optional" style="font-weight:400;font-size:.78rem;">(tap to select)</span></span>
+        <div class="card-icon amber"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L3 4v6l4 3 4-3V4L7 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <span>Interactive 3D Body Figure <span class="optional" style="font-weight:400;font-size:.78rem;">(click parts to select)</span></span>
       </div>
-      <div class="body-map-wrap">
-        <svg viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg" style="max-width:120px;display:block;margin:0 auto;flex-shrink:0;">
-          <ellipse class="body-region" id="br-head" data-id="head" data-label="Head" cx="50" cy="18" rx="15" ry="16" />
-          <rect class="body-region" id="br-neck" data-id="neck" data-label="Neck" x="44" y="33" width="12" height="8" rx="3" />
-          <rect class="body-region" id="br-chest" data-id="chest" data-label="Chest" x="33" y="43" width="34" height="28" rx="5" />
-          <rect class="body-region" id="br-abdomen" data-id="abdomen" data-label="Abdomen" x="33" y="73" width="34" height="24" rx="4" />
-          <rect class="body-region" id="br-larm" data-id="larm" data-label="Left Arm" x="16" y="43" width="15" height="48" rx="6" />
-          <rect class="body-region" id="br-rarm" data-id="rarm" data-label="Right Arm" x="69" y="43" width="15" height="48" rx="6" />
-          <rect class="body-region" id="br-lleg" data-id="lleg" data-label="Left Leg" x="33" y="99" width="15" height="60" rx="6" />
-          <rect class="body-region" id="br-rleg" data-id="rleg" data-label="Right Leg" x="52" y="99" width="15" height="60" rx="6" />
-          <ellipse class="body-region" id="br-lfoot" data-id="lfoot" data-label="Left Foot" cx="40" cy="166" rx="8" ry="5" />
-          <ellipse class="body-region" id="br-rfoot" data-id="rfoot" data-label="Right Foot" cx="59" cy="166" rx="8" ry="5" />
-        </svg>
+      <div class="body-viz-wrap">
+        <div id="three-body-container" class="three-container body-viz-active"></div>
         <div class="selected-regions-list" id="selected-regions-list">
-          <span style="font-size:.75rem;color:var(--text3);line-height:2;">Tap body areas to mark affected regions…</span>
+          <span style="font-size:.75rem;color:var(--text3);line-height:2;">Click 3D body parts to mark affected regions…</span>
+        </div>
+        
+        <!-- Hidden 2D Map for logic compatibility -->
+        <div style="display:none">
+          <svg viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg">
+            <ellipse class="body-region" id="br-head" data-id="head" />
+            <rect class="body-region" id="br-neck" data-id="neck" />
+            <rect class="body-region" id="br-chest" data-id="chest" />
+            <rect class="body-region" id="br-abdomen" data-id="abdomen" />
+            <rect class="body-region" id="br-larm" data-id="larm" />
+            <rect class="body-region" id="br-rarm" data-id="rarm" />
+            <rect class="body-region" id="br-lleg" data-id="lleg" />
+            <rect class="body-region" id="br-rleg" data-id="rleg" />
+            <ellipse class="body-region" id="br-lfoot" data-id="lfoot" />
+            <ellipse class="body-region" id="br-rfoot" data-id="rfoot" />
+          </svg>
         </div>
       </div>
     </div>

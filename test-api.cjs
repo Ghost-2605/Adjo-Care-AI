@@ -2,9 +2,9 @@ const fs = require('fs');
 
 async function test() {
   const env = fs.readFileSync('.env', 'utf8');
-  const match = env.match(/VITE_GEMINI_API_KEY=["']?([^"'\n\r]+)["']?/);
+  const match = env.match(/VITE_GROQ_API_KEY=["']?([^"'\n\r]+)["']?/);
   if (!match || !match[1]) { 
-    console.error('No API key found in .env'); 
+    console.error('No Groq API key found in .env'); 
     process.exit(1); 
   }
   const key = match[1];
@@ -46,21 +46,25 @@ medications: suggest 2-4 appropriate OTC medications for the symptoms.
 hospitals: suggest real hospitals near Udupi, Karnataka, India with realistic doctor profiles matching the condition.`;
 
   const body = JSON.stringify({
-    contents: [{ parts: [{ text: prompt }] }],
-    generationConfig: { response_mime_type: 'application/json' }
+    model: 'llama-3.3-70b-versatile',
+    messages: [{ role: 'user', content: prompt }],
+    response_format: { type: 'json_object' }
   });
 
   try {
-    const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + key, {
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${key}`
+      },
       body
     });
     const data = await res.json();
     if (data.error) {
       console.error('API Error:', data.error.message);
     } else {
-      console.log('Success:', data.candidates[0].content.parts[0].text);
+      console.log('Success:', data.choices[0].message.content);
     }
   } catch (err) {
     console.error('Fetch Failed:', err.message);

@@ -7,9 +7,13 @@ import { focusDrugInput, handleDrugInputKey, addDrugFromInput, removeDrug, check
 import { logVitals, renderVitalsLog } from './features/vitals.js';
 import { renderHistory, clearHistory } from './features/history.js';
 import { setupPWAInstall, installPWA } from './pwa.js';
+import { openAuthModal, closeAuthModal, signIn, signUp, updateAuthUI } from './auth.js';
+import { renderHealthFacts, initFactsUI } from './features/facts.js';
+import { initThreeBody } from './three-body.js';
 
-export function initApp() {
-  loadState();
+export async function initApp() {
+  await loadState();
+  updateAuthUI();
 
   // Apply state
   if (state.currentTheme) applyTheme(state.currentTheme);
@@ -19,8 +23,14 @@ export function initApp() {
   renderHealthScore();
   renderVitalsLog();
   renderTips();
+  renderHealthFacts();
+  initFactsUI();
+
+  // Init 3D Body
+  setTimeout(() => initThreeBody('three-body-container'), 100);
 
   // Setup DOM Events
+
   setupEvents();
 
   // Show welcome / modal
@@ -39,10 +49,15 @@ function setupEvents() {
   document.getElementById('hamburger-btn')?.addEventListener('click', toggleSidebar);
   document.getElementById('sidebar-backdrop')?.addEventListener('click', closeSidebar);
   document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-  
+
   document.querySelectorAll('.nav-item').forEach(el => {
-    el.addEventListener('click', (e) => showTab(e.currentTarget.dataset.tab, e.currentTarget));
+    el.addEventListener('click', (e) => {
+      const tabId = e.currentTarget.dataset.tab;
+      showTab(tabId, e.currentTarget);
+      if (tabId === 'facts') renderHealthFacts();
+    });
   });
+
 
   document.querySelectorAll('.lang-btn').forEach(el => {
     el.addEventListener('click', (e) => setLang(e.currentTarget.dataset.lang));
@@ -54,7 +69,7 @@ function setupEvents() {
 
   // Topbar
   document.getElementById('emergency-btn')?.addEventListener('click', showEmergency);
-  
+
   // Overlays
   document.getElementById('call-108-btn')?.addEventListener('click', callEmergency);
   document.getElementById('cancel-emergency-btn')?.addEventListener('click', hideEmergency);
@@ -66,7 +81,7 @@ function setupEvents() {
   document.querySelectorAll('.body-region').forEach(el => {
     el.addEventListener('click', e => toggleRegion(e.currentTarget.dataset.id, e.currentTarget.dataset.label));
   });
-  
+
   // Event delegation for dynamically added region remove buttons
   document.getElementById('selected-regions-list')?.addEventListener('click', e => {
     const btn = e.target.closest('button[data-remove-region]');
@@ -82,7 +97,7 @@ function setupEvents() {
   });
 
   document.getElementById('locate-btn')?.addEventListener('click', detectLocation);
-  
+
   const severityInput = document.getElementById('inp-severity');
   if (severityInput) {
     severityInput.addEventListener('input', e => {
@@ -129,7 +144,7 @@ function setupEvents() {
     const btn = e.target.closest('.remind');
     if (btn) openReminderModal(btn.dataset.remind);
   });
-  
+
   document.getElementById('confirm-reminder-btn')?.addEventListener('click', confirmReminder);
   document.getElementById('cancel-reminder-btn')?.addEventListener('click', closeReminderModal);
 
@@ -143,6 +158,12 @@ function setupEvents() {
 
   // PWA Install
   document.getElementById('pwa-install-btn')?.addEventListener('click', installPWA);
+
+  // Auth
+  document.getElementById('open-auth-btn')?.addEventListener('click', openAuthModal);
+  document.getElementById('auth-login-btn')?.addEventListener('click', signIn);
+  document.getElementById('auth-signup-btn')?.addEventListener('click', signUp);
+  document.getElementById('auth-close-btn')?.addEventListener('click', closeAuthModal);
 }
 
 // Inline API Modal logic because it's only used here
@@ -187,7 +208,7 @@ const TIPS = [
 
 function renderTips() {
   const grid = document.getElementById('tips-grid');
-  if(grid) {
+  if (grid) {
     grid.innerHTML = TIPS.map(tp => `
       <div class="tip-card"><div class="tip-icon">${tp.icon}</div><div class="tip-text"><strong>${tp.title}</strong>${tp.text}</div></div>
     `).join('');

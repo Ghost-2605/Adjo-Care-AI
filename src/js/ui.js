@@ -151,7 +151,7 @@ export function downloadPDF() {
     doc.setFontSize(9); doc.setTextColor(150, 150, 150);
     doc.text('AdJoCare AI v2 – For informational purposes only. Always consult a qualified medical professional.', 105, 285, { align: 'center' });
 
-    doc.save(`AdJoCare_Report_${state.lastResult.name.replace(/ /g, '_')}_${new Date().toLocaleDateString('en-IN').replace(/\\//g, '-')}.pdf`);
+    doc.save(`AdJoCare_Report_${state.lastResult.name.replace(/ /g, '_')}_${new Date().toLocaleDateString('en-IN').replace(/\//g, '-')}.pdf`);
     showToast('✅ PDF downloaded!');
   } catch (e) {
     console.error(e);

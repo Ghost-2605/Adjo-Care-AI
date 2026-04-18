@@ -1,7 +1,9 @@
 /* ─── CARDS ──────────────────────────────────────────────── */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:var(--shadow);}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:rgba(29,158,117,.15);}
 .card-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;font-size:.875rem;font-weight:500;}
-.card-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.card-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.3s ease;}
+.card:hover .card-icon{transform:scale(1.1);}
 .card-icon.teal{background:var(--accent-bg);color:var(--accent);}
 .card-icon.amber{background:var(--accent2-bg);color:var(--accent2);}
 .card-icon.red{background:var(--danger-bg);color:var(--danger);}
@@ -29,9 +31,10 @@ label{font-size:.8125rem;font-weight:500;color:var(--text2);}
 
 /* ─── CHIPS ──────────────────────────────────────────────── */
 .chip-grid{display:flex;flex-wrap:wrap;gap:6px;}
-.chip{padding:.35rem .85rem;border-radius:999px;border:1px solid var(--border);background:var(--surface2);font-size:.8rem;color:var(--text2);transition:all var(--trans);font-family:inherit;}
-.chip:hover{border-color:var(--accent);color:var(--accent);}
-.chip.selected{background:var(--accent-bg);border-color:rgba(29,158,117,.4);color:var(--accent);font-weight:500;}
+.chip{padding:.35rem .85rem;border-radius:999px;border:1px solid var(--border);background:var(--surface2);font-size:.8rem;color:var(--text2);transition:all var(--trans);font-family:inherit;user-select:none;}
+.chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-bg);}
+.chip:active{transform:scale(0.95);}
+.chip.selected{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500;box-shadow:0 3px 10px rgba(29,158,117,.25);}
 
 /* ─── TOAST ──────────────────────────────────────────────── */
 .toast-wrap{position:fixed;bottom:1.5rem;right:1.5rem;z-index:99999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none;}
@@ -47,9 +50,10 @@ label{font-size:.8125rem;font-weight:500;color:var(--text2);}
 .pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}
 
 /* ─── BUTTONS ────────────────────────────────────────────── */
-.analyze-btn{width:100%;margin-top:1.25rem;display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--accent);color:#fff;padding:.85rem 1.5rem;border-radius:999px;font-size:.9375rem;font-weight:500;box-shadow:0 3px 14px rgba(29,158,117,.3);transition:all var(--trans);border:none;}
-.analyze-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 20px rgba(29,158,117,.38);}
-.analyze-btn:disabled{opacity:.55;cursor:not-allowed;}
+.analyze-btn{width:100%;margin-top:1.25rem;display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--accent);color:#fff;padding:.85rem 1.5rem;border-radius:999px;font-size:.9375rem;font-weight:500;box-shadow:0 6px 20px rgba(29,158,117,.25);transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);border:none;}
+.analyze-btn:hover:not(:disabled){transform:translateY(-2px) scale(1.01);box-shadow:0 10px 25px rgba(29,158,117,.35);}
+.analyze-btn:active:not(:disabled){transform:translateY(0) scale(0.98);}
+.analyze-btn:disabled{opacity:.55;cursor:not-allowed;filter:grayscale(0.5);}
 
 .voice-btn{display:flex;align-items:center;gap:6px;padding:.45rem .9rem;border-radius:999px;border:1px solid var(--border);background:var(--surface2);font-size:.8rem;color:var(--text2);transition:all .2s;cursor:pointer;}
 .voice-btn:hover{border-color:var(--accent);color:var(--accent);}

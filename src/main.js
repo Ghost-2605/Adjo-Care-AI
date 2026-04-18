@@ -12,6 +12,7 @@ import vitalsHtml from './partials/panels/vitals.html?raw';
 import scoreHtml from './partials/panels/health-score.html?raw';
 import historyHtml from './partials/panels/history.html?raw';
 import tipsHtml from './partials/panels/health-tips.html?raw';
+import factsHtml from './partials/panels/health-facts.html?raw';
 
 // Assemble DOM
 document.getElementById('app-root').innerHTML = `
@@ -30,10 +31,12 @@ document.getElementById('app-root').innerHTML = `
         ${scoreHtml}
         ${historyHtml}
         ${tipsHtml}
+        ${factsHtml}
       </div>
     </div>
   </div>
 `;
+
 
 // Initialize Application Logic
 import { initApp } from './js/init.js';

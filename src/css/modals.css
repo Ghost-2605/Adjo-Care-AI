@@ -74,3 +74,19 @@
 .reminder-set-btn{background:var(--accent);color:#fff;border:none;padding:.55rem 1.25rem;border-radius:8px;font-weight:500;cursor:pointer;font-size:.875rem;transition:all .2s;}
 .reminder-set-btn:hover{opacity:.9;}
 .reminder-cancel{background:none;border:none;color:var(--text3);cursor:pointer;font-size:.8rem;margin-top:.5rem;font-family:inherit;}
+
+/* ─── AUTH & CLOUD SYNC ──────────────────────────────────── */
+#auth-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;transition:opacity .3s ease;}
+#auth-modal.hidden{opacity:0;pointer-events:none;}
+.auth-input-group{margin-bottom:1rem;}
+.auth-input-group .api-key-input{margin-bottom:.5rem;padding-right:1rem;}
+.auth-btn-row{display:flex;gap:.75rem;margin-bottom:.5rem;}
+
+.nav-item-mini{display:flex;align-items:center;gap:.6rem;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:.3rem .8rem;font-size:.75rem;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;}
+.nav-item-mini:hover{background:var(--accent-bg);color:var(--accent);border-color:var(--accent);}
+.nav-item-mini svg{color:var(--text3);}
+.nav-item-mini:hover svg{color:var(--accent);}
+
+#auth-status-area { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+#auth-user-label { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--text3); font-weight: 600; margin-bottom: 6px; display: block; }
+

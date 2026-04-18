@@ -4,3 +4,6 @@
 @import './components.css';
 @import './modals.css';
 @import './panels.css';
+@import './facts.css';
+
+.hidden { display: none; }

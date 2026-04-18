@@ -1,0 +1,91 @@
+<div class="panel" id="tab-facts">
+  <div class="panel-header">
+    <h2 class="panel-title">Know more facts about health</h2>
+    <div class="facts-search-wrap">
+      <input type="text" id="disease-search-input" placeholder="Search a disease (e.g. Tuberculosis, Diabetes)..." class="facts-search-input">
+      <button id="disease-search-btn" class="facts-search-btn">Search</button>
+    </div>
+  </div>
+
+  <div class="panel-content">
+    <div id="disease-info-card" class="stats-card full-width hidden">
+      <h3 id="disease-name-title" class="card-title">Disease Name</h3>
+      <p id="disease-description" class="disease-desc-text">Description goes here...</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stats-card full-width">
+        <div class="card-header">
+          <h3 id="chart-main-title" class="card-title">Yearly Deaths by Cause & Age Group</h3>
+          <p id="chart-sub-title" class="card-sub">Data source: WHO Global Health Estimates</p>
+        </div>
+
+        <div class="chart-container" style="position: relative; height:400px; width:100%">
+          <canvas id="healthFactsChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Routine Section -->
+      <div id="disease-routine-section" class="stats-card full-width hidden">
+        <div class="card-header">
+           <h3 class="card-title">Recommended Routine & Care</h3>
+           <p class="card-sub">AI-generated health guidance based on searched condition</p>
+        </div>
+        <div id="routine-container" class="routine-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="stats-card">
+        <div class="card-header">
+          <h3 class="card-title">Top 3 Global Killers</h3>
+        </div>
+        <div class="fact-list">
+          <div class="fact-item">
+            <div class="fact-rank">1</div>
+            <div class="fact-info">
+              <span class="fact-label">Cardiovascular Diseases</span>
+              <span class="fact-value">17.9M deaths/year</span>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-rank">2</div>
+            <div class="fact-info">
+              <span class="fact-label">Cancers</span>
+              <span class="fact-value">9.6M deaths/year</span>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-rank">3</div>
+            <div class="fact-info">
+              <span class="fact-label">Respiratory Diseases</span>
+              <span class="fact-value">3.9M deaths/year</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-card">
+        <div class="card-header">
+          <h3 class="card-title">Key Insight</h3>
+        </div>
+        <div class="insight-box">
+          <p>Over <strong>70%</strong> of all deaths globally are now caused by Non-Communicable Diseases (NCDs). Early detection via tools like <strong>AdJoCare</strong> can significantly improve survival outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="routine-popover" class="routine-popover">
+    <div class="routine-popover-card">
+      <div class="popover-header">
+        <div class="popover-icon" id="popover-icon">💡</div>
+        <h3 class="popover-title" id="popover-title">Care Guidance</h3>
+      </div>
+      <div class="popover-content" id="popover-content">
+        <!-- Content here -->
+      </div>
+      <button class="popover-close" id="routine-popover-close">Close Guidance</button>
+    </div>
+  </div>
+</div>

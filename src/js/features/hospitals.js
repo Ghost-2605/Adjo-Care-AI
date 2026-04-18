@@ -17,7 +17,9 @@ export function renderHospitals(hospitals, location) {
   container.innerHTML = hospitals.map((h, i) => {
     const imgUrl = hospitalImgs[i % hospitalImgs.length];
     const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(h.mapQuery || h.name + ' ' + location)}`;
-    const initials = (h.doctorName || 'Dr').split(' ').filter((_, i) => i > 0).map(w => w[0]).join('').slice(0, 2) || 'DR';
+    const initials = h.doctorName 
+      ? h.doctorName.replace(/Dr\.\s*|Dr\s*|Mr\.\s*|Ms\.\s*/i, '').split(' ').filter(Boolean).map(w => w[0]).join('').slice(0, 2).toUpperCase() || 'DR'
+      : 'DR';
     
     return `
     <div class="hospital-card" style="animation-delay:${i * 0.1}s">

@@ -218,7 +218,6 @@ CRITICAL INSTRUCTION: You must translate ALL of your response strings (summary, 
     document.getElementById('result-content').style.display = 'block';
     showToast('✅ Analysis complete!');
   } catch (err) {
-    document.getElementById('result-loading').style.display = 'none';
     document.getElementById('result-empty').style.display = 'flex';
     let msg = 'Analysis failed: ' + err.message;
     document.getElementById('result-empty').querySelector('p').textContent = msg;

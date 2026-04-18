@@ -102,7 +102,7 @@ export const langNames = {
 
 export function translateUI(langCode) {
   const dict = translations[langCode] || translations.en;
-  
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key]) {
@@ -121,7 +121,7 @@ export function translateUI(langCode) {
           }
         });
         if (!textNodeFound) {
-           el.textContent = dict[key];
+          el.textContent = dict[key];
         }
       }
     }
