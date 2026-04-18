@@ -80,8 +80,8 @@
   .emergency-btn span:last-child{display:none;}
   
   .bottom-nav{display:flex;}
-  .panels{padding-bottom:70px;} /* Space for bottom nav */
-  .panel-inner{padding:1rem .75rem 2rem;}
+  .panels{padding-bottom:80px;} /* Space for bottom nav */
+  .panel-inner{padding:1rem .75rem 5rem;} /* Extra bottom padding so Analyze button clears the bottom nav */
   .panel-hero h1{font-size:1.6rem;}
   
   /* Refine card spacing for mobile */
