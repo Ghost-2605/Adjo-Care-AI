@@ -44,6 +44,10 @@ export async function initApp() {
   setupPWAInstall();
 }
 
+function closeMoreMenu() {
+  document.getElementById('bottom-more-menu')?.classList.remove('show');
+}
+
 function setupEvents() {
   // Sidebar & Layout
   document.getElementById('hamburger-btn')?.addEventListener('click', toggleSidebar);
@@ -58,6 +62,38 @@ function setupEvents() {
     });
   });
 
+  // Bottom Nav (mobile)
+  document.querySelectorAll('.bottom-nav-item[data-tab]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const tabId = e.currentTarget.dataset.tab;
+      showTab(tabId);
+      if (tabId === 'facts') renderHealthFacts();
+      closeMoreMenu();
+    });
+  });
+
+  // Bottom Nav "More" menu
+  const moreBtn = document.getElementById('bottom-nav-more-btn');
+  const moreMenu = document.getElementById('bottom-more-menu');
+  if (moreBtn && moreMenu) {
+    moreBtn.addEventListener('click', () => {
+      moreMenu.classList.toggle('show');
+    });
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!moreBtn.contains(e.target) && !moreMenu.contains(e.target)) {
+        moreMenu.classList.remove('show');
+      }
+    });
+  }
+  document.querySelectorAll('.bottom-more-item').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const tabId = e.currentTarget.dataset.tab;
+      showTab(tabId);
+      if (tabId === 'facts') renderHealthFacts();
+      closeMoreMenu();
+    });
+  });
 
   document.querySelectorAll('.lang-btn').forEach(el => {
     el.addEventListener('click', (e) => setLang(e.currentTarget.dataset.lang));

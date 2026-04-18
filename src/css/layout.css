@@ -71,22 +71,59 @@
 .bottom-nav-item::before{content:'';position:absolute;top:-2px;left:50%;width:0;height:3px;background:var(--accent);border-radius:0 0 3px 3px;transition:all .3s ease;transform:translateX(-50%);}
 .bottom-nav-item.active::before{width:24px;}
 
+/* ─── BOTTOM MORE MENU ───────────────────────────────────── */
+.bottom-more-menu{display:none;position:fixed;bottom:68px;right:8px;z-index:91;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:.5rem;box-shadow:0 -8px 30px rgba(0,0,0,.15);min-width:200px;transform-origin:bottom right;animation:more-pop .25s cubic-bezier(.34,1.56,.64,1) both;}
+.bottom-more-menu.show{display:block;}
+@keyframes more-pop{from{opacity:0;transform:scale(.9) translateY(8px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.bottom-more-item{display:flex;align-items:center;gap:10px;width:100%;padding:.6rem .75rem;border-radius:10px;font-size:.8125rem;font-weight:500;color:var(--text2);background:none;border:none;text-align:left;transition:all .15s;}
+.bottom-more-item:hover,.bottom-more-item:active{background:var(--accent-bg);color:var(--accent);}
+.bottom-more-item svg{flex-shrink:0;opacity:.6;}
+.bottom-more-item:hover svg{opacity:1;}
+.bottom-more-backdrop{display:none;position:fixed;inset:0;z-index:89;background:transparent;}
+.bottom-more-backdrop.show{display:block;}
+
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media(max-width:640px){
   .sidebar{position:fixed;left:0;top:0;bottom:0;transform:translateX(-100%);}
   .sidebar.open{transform:translateX(0);}
   .hamburger{display:flex;}
-  .topbar{padding:0 .875rem;gap:.5rem;}
+  .topbar{padding:0 .875rem;gap:.5rem;height:48px;}
+  .topbar-title{font-size:.95rem;}
   .emergency-btn span:last-child{display:none;}
+  .api-status-badge span{display:none;} /* Hide text, keep dot */
   
   .bottom-nav{display:flex;}
-  .panels{padding-bottom:80px;} /* Space for bottom nav */
-  .panel-inner{padding:1rem .75rem 5rem;} /* Extra bottom padding so Analyze button clears the bottom nav */
-  .panel-hero h1{font-size:1.6rem;}
+  .panels{padding-bottom:80px;}
+  .panel-inner{padding:1rem .75rem 5rem;}
+  .panel-hero{margin-bottom:1.25rem;}
+  .panel-hero h1{font-size:1.5rem;}
+  .panel-hero p{font-size:.825rem;}
+  .panel-top-row h2{font-size:1.2rem;}
   
-  /* Refine card spacing for mobile */
+  /* Cards */
   .card{padding:1rem;margin-bottom:.875rem;}
+  .card-header{margin-bottom:.75rem;font-size:.8125rem;}
   .section-title{margin-bottom:.75rem;}
+
+  /* 3D body container */
+  .three-container{height:240px;}
+  .body-viz-wrap{min-height:200px;gap:1rem;}
+
+  /* Analyze button – ensure fully visible */
+  .analyze-btn{margin-top:1rem;padding:.75rem 1.25rem;font-size:.875rem;margin-bottom:1rem;}
+
+  /* Toast above bottom nav */
+  .toast-wrap{bottom:80px;right:1rem;left:1rem;}
+  .toast{max-width:100%;text-align:center;}
+
+  /* Hospitals */
+  .hosp-actions{flex-direction:column;gap:.4rem;padding:0 .75rem .75rem;}
+  .hosp-img-wrap{height:100px;}
+
+  /* Modals */
+  .api-modal-card{padding:1.5rem;border-radius:16px;}
+  .overlay-card{padding:1.5rem;border-radius:16px;}
+  .reminder-card{padding:1.25rem;border-radius:14px;}
 }
 @media print{
   #welcome,.topbar,.sidebar,#emergency-overlay,#print-overlay,.analyze-btn,.print-btn,button,#reminder-modal,.toast-wrap{display:none!important;}
