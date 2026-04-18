@@ -60,13 +60,16 @@ export function showTab(id, btn = null) {
   const panel = document.getElementById('tab-' + id);
   if (panel) panel.classList.add('active');
   
+  // Sync Sidebar
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  if (btn) {
-    btn.classList.add('active');
-  } else {
-    const navBtn = document.querySelector(`.nav-item[data-tab="${id}"]`);
-    if (navBtn) navBtn.classList.add('active');
-  }
+  const navBtn = document.querySelector(`.nav-item[data-tab="${id}"]`);
+  if (navBtn) navBtn.classList.add('active');
+
+  // Sync Bottom Nav
+  document.querySelectorAll('.bottom-nav-item').forEach(bn => bn.classList.remove('active'));
+  const botBtn = document.querySelector(`.bottom-nav-item[data-tab="${id}"]`);
+  if (botBtn) botBtn.classList.add('active');
+
   closeSidebar();
 }
 

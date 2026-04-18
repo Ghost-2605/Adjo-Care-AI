@@ -2,6 +2,7 @@ import './css/main.css';
 
 import sidebarHtml from './partials/sidebar.html?raw';
 import topbarHtml from './partials/topbar.html?raw';
+import bottomNavHtml from './partials/bottom-nav.html?raw';
 import modalsHtml from './partials/modals.html?raw';
 import checkHtml from './partials/panels/symptom-check.html?raw';
 import analysisHtml from './partials/panels/ai-analysis.html?raw';
@@ -33,6 +34,7 @@ document.getElementById('app-root').innerHTML = `
         ${tipsHtml}
         ${factsHtml}
       </div>
+      ${bottomNavHtml}
     </div>
   </div>
 `;
